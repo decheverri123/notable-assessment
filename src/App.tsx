@@ -16,11 +16,15 @@ function App() {
     const response = await api.get<Blog[]>("/blogs");
     return response.data;
   };
+
   const [blogs, setBlogs] = useState<Blog[]>([]);
   useEffect(() => {
     const getAllBlogs = async () => {
       const allBlogs = await getBlogs();
-      if (allBlogs) setBlogs(allBlogs);
+
+      if (allBlogs) {
+        setBlogs(allBlogs);
+      }
     };
 
     getAllBlogs();
