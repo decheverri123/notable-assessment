@@ -1,22 +1,70 @@
 {
-  "blogs": [
+  "physicians": [
     {
-      "id": 1,
-      "title": "First Blog",
-      "body": "lorem ipsum sum cum laude",
-      "author": "Danny"
+      "id": "d1",
+      "name": "Julius Hibbert",
+      "patients": [
+        {
+          "id": "p1",
+          "name": "Sterling Archer",
+          "time": "8:00AM",
+          "kind": "New Patient"
+        },
+        {
+          "id": "p2",
+          "name": "Cyril Figis",
+          "time": "8:30AM",
+          "kind": "Follow-up"
+        },
+        {
+          "id": "p3",
+          "name": "Ray Gilette",
+          "time": "9:00AM",
+          "kind": "Follow-up"
+        },
+        {
+          "id": "p4",
+          "name": "Lana Kane",
+          "time": "9:30AM",
+          "kind": "New Patient"
+        },
+        {
+          "id": "p5",
+          "name": "Pam Poovey",
+          "time": "10:00AM",
+          "kind": "New Patient"
+        }
+      ]
     },
     {
-      "id": 2,
-      "title": "Second Blog",
-      "body": "lorem ipsum sum cum laude the second",
-      "author": "Jason"
-    },
-    {
-      "id": 3,
-      "title": "Third Blog",
-      "body": "lorem ipsum sum cum laude the second",
-      "author": "Helena"
+      "id": "d2",
+      "name": "Algemop Krieger",
+      "patients": [
+        {
+          "id": "p6",
+          "name": "Danny",
+          "time": "8:00AM",
+          "kind": "New Patient"
+        },
+        {
+          "id": "p7",
+          "name": "Cyril Figis",
+          "time": "8:30AM",
+          "kind": "Follow-up"
+        },
+        {
+          "id": "p8",
+          "name": "Eric",
+          "time": "9:00AM",
+          "kind": "Follow-up"
+        },
+        {
+          "id": "p9",
+          "name": "Jonah",
+          "time": "9:30AM",
+          "kind": "New Patient"
+        }
+      ]
     }
   ]
 }

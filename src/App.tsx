@@ -1,48 +1,72 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import Axios from "axios";
-import api from "./api/blogs";
-
-interface Blog {
-  id: Number;
-  title: String;
-  body: String;
-  author: String;
-}
+import {
+  Box,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+import AppointmentsDisplay from "./AppointmentsDisplay";
+import api from "./api/physicians";
+import { Physician } from "./models/Interfaces";
 
 function App() {
-  const getBlogs = async () => {
-    const response = await api.get<Blog[]>("/blogs");
+  const getPhysicians = async () => {
+    const response = await api.get<Physician[]>("/physicians");
     return response.data;
   };
 
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  useEffect(() => {
-    const getAllBlogs = async () => {
-      const allBlogs = await getBlogs();
+  const [physicians, setPhysicians] = useState<Physician[]>([]);
+  const [selectedValue, setSelectedValue] = useState("d1");
 
-      if (allBlogs) {
-        setBlogs(allBlogs);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue((event.target as HTMLInputElement).value);
+    console.log(selectedValue);
+  };
+
+  useEffect(() => {
+    const getAllPhysicians = async () => {
+      const getAllPhysicians = await getPhysicians();
+
+      if (getAllPhysicians) {
+        setPhysicians(getAllPhysicians);
       }
     };
 
-    getAllBlogs();
+    getAllPhysicians();
   }, []);
 
   return (
     <div className="App">
-      <h1>Hello</h1>
-      {blogs &&
-        blogs.map((blog) => {
-          return (
-            <div>
-              <h2>{blog.title}</h2>
-              <h3>{blog.author}</h3>
-              <p>{blog.body}</p>
-            </div>
-          );
-        })}
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label">Doctors</FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              value={selectedValue}
+              name="radio-buttons-group"
+              onChange={handleChange}
+            >
+              {physicians.map((physician) => {
+                return (
+                  <FormControlLabel
+                    value={physician.id}
+                    control={<Radio />}
+                    label={physician.name}
+                  />
+                );
+              })}
+            </RadioGroup>
+          </FormControl>
+        </Grid>
+        <Grid item xs={8}>
+          <AppointmentsDisplay physicianId={selectedValue} />
+        </Grid>
+      </Grid>
     </div>
   );
 }
