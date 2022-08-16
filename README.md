@@ -10,7 +10,7 @@
 
 ### In the interest of time, I have set up the server/database as a json file using the json-server package
 
-### Please use `npx json-server --watch data/db.json --port 8000` to run the server
+### Please use `npx json-server --watch data/db.json --port 8000` to run the server. Note, if you don't run it, no data will display on the front-end.
 
 ## Things I Would Do If I Had More Time
 
