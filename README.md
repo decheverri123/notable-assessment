@@ -2,7 +2,7 @@
 
 ## Frontend
 
-### I have used React with Typescript to construct the front-end
+### I have used React with Typescript to construct the front-end. I also used the Material-UI framework.
 
 ### To start project, please run `npm install` and then `npm run dev`
 
