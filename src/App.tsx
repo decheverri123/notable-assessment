@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Axios from "axios";
+import api from "./api/blogs";
 
 interface Blog {
   id: Number;
@@ -11,12 +12,18 @@ interface Blog {
 }
 
 function App() {
+  const getBlogs = async () => {
+    const response = await api.get<Blog[]>("/blogs");
+    return response.data;
+  };
   const [blogs, setBlogs] = useState<Blog[]>([]);
   useEffect(() => {
-    const url = "http://localhost:8000/blogs";
-    Axios.get(url).then((res) => {
-      setBlogs(res.data);
-    });
+    const getAllBlogs = async () => {
+      const allBlogs = await getBlogs();
+      if (allBlogs) setBlogs(allBlogs);
+    };
+
+    getAllBlogs();
   }, []);
 
   return (
