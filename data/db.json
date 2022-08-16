@@ -65,6 +65,48 @@
           "kind": "New Patient"
         }
       ]
+    },
+    {
+      "id": "d3",
+      "name": "Junior Echeverri",
+      "patients": [
+        {
+          "id": "p10",
+          "name": "Rick Sanchez",
+          "time": "12:00PM",
+          "kind": "New Patient"
+        },
+        {
+          "id": "p11",
+          "name": "Morty Mortimer",
+          "time": "1:00PM",
+          "kind": "New Patient"
+        },
+        {
+          "id": "p12",
+          "name": "Jeff Winger",
+          "time": "2:00PM",
+          "kind": "Follow-up"
+        },
+        {
+          "id": "p13",
+          "name": "Britta",
+          "time": "3:30PM",
+          "kind": "New Patient"
+        },
+        {
+          "id": "p14",
+          "name": "Pierce Hawthorn",
+          "time": "4:00PM",
+          "kind": "Follow-up"
+        },
+        {
+          "id": "p15",
+          "name": "Troy Barns",
+          "time": "5:00PM",
+          "kind": "Follow-up"
+        }
+      ]
     }
   ]
 }

@@ -9,34 +9,23 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import AppointmentsDisplay from "./AppointmentsDisplay";
+import AppointmentsDisplay, { Patient } from "./AppointmentsDisplay";
 import api from "./api/physicians";
 import { Physician } from "./models/Interfaces";
+import axios from "axios";
 
 function App() {
   const getPhysicians = async () => {
-    const response = await api.get<Physician[]>("/physicians");
-    return response.data;
+    const data = await axios
+      .get<Physician[]>("http://localhost:8000/physicians")
+      .then((res) => setPhysicians(res.data));
   };
 
   const [physicians, setPhysicians] = useState<Physician[]>([]);
   const [selectedValue, setSelectedValue] = useState("d1");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedValue((event.target as HTMLInputElement).value);
-    console.log(selectedValue);
-  };
-
   useEffect(() => {
-    const getAllPhysicians = async () => {
-      const getAllPhysicians = await getPhysicians();
-
-      if (getAllPhysicians) {
-        setPhysicians(getAllPhysicians);
-      }
-    };
-
-    getAllPhysicians();
+    getPhysicians();
   }, []);
 
   return (
@@ -49,7 +38,7 @@ function App() {
               aria-labelledby="demo-radio-buttons-group-label"
               value={selectedValue}
               name="radio-buttons-group"
-              onChange={handleChange}
+              onChange={(e) => setSelectedValue(e.target.value)}
             >
               {physicians.map((physician) => {
                 return (
