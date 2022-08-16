@@ -1,36 +1,13 @@
-import * as React from "react";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import api from "./api/physicians";
-import physicians from "./api/physicians";
+import { Physician } from "./models/Interfaces";
 
 export default function AppointmentsDisplay(props: AppointmentsProps) {
-  const { physicianId } = props;
-
-  const getPhysicians = async () => {
-    const response = await api.get<Physician[]>("/physicians");
-    return response.data;
-  };
-
-  const [physicians, setPhysicians] = React.useState<Physician[]>([]);
-  React.useEffect(() => {
-    const getAllPhysicians = async () => {
-      const getAllPhysicians = await getPhysicians();
-
-      if (getAllPhysicians) {
-        setPhysicians(getAllPhysicians);
-      }
-    };
-
-    console.log(physicianId);
-
-    getAllPhysicians();
-  }, []);
+  const { physicianId, physicians } = props;
 
   const specificPhysician = physicians.find(
     (physician) => physician.id == physicianId
@@ -65,19 +42,8 @@ export default function AppointmentsDisplay(props: AppointmentsProps) {
     </TableContainer>
   );
 }
-export interface Physician {
-  id: string;
-  name: string;
-  patients: Patient[];
-}
-
-export interface Patient {
-  id: string;
-  name: string;
-  time: string;
-  kind: string;
-}
 
 interface AppointmentsProps {
   physicianId: string;
+  physicians: Physician[];
 }

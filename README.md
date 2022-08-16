@@ -22,4 +22,6 @@
 
 ### P.S. json-server does not support getting nested objects, so I was not able to do a separate API request to get just the patients. Using something like Mongoose would allow this functionality, but it would take too long to implement for this specific exercise
 
+![Screenshot](screenshot.png)
+
 #### P.S. I love Archer too

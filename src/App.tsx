@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-import "./App.css";
 import {
-  Box,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -9,10 +6,11 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import AppointmentsDisplay, { Patient } from "./AppointmentsDisplay";
-import api from "./api/physicians";
-import { Physician } from "./models/Interfaces";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import "./App.css";
+import AppointmentsDisplay from "./AppointmentsDisplay";
+import { Physician } from "./models/Interfaces";
 
 function App() {
   const getPhysicians = async () => {
@@ -53,7 +51,10 @@ function App() {
           </FormControl>
         </Grid>
         <Grid item xs={8}>
-          <AppointmentsDisplay physicianId={selectedValue} />
+          <AppointmentsDisplay
+            physicianId={selectedValue}
+            physicians={physicians}
+          />
         </Grid>
       </Grid>
     </div>
